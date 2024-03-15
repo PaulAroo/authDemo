@@ -6,9 +6,14 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import axiosInstance from "../axios"
 
 const formSchema = z.object({
-	email: z.string().email({
-		message: "Please provide a valid email address",
-	}),
+	email: z
+		.string()
+		.email({
+			message: "Please provide a valid email address",
+		})
+		.min(15, {
+			message: "Email must be at least 15 characters long",
+		}),
 	password: z.string().min(6, {
 		message: "Password must be at least 8 characters long",
 	}),
@@ -52,7 +57,7 @@ export const useLogin = () => {
 			.catch((error) => {
 				let errMsg = "something went wrong"
 				if (error.response.status === 422) {
-					errMsg = error.response.data.detail[0].msg
+					errMsg = `Please provide valid inputs`
 				} else {
 					errMsg = error.response.data.detail
 				}
