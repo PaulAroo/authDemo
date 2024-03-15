@@ -5,8 +5,8 @@ import { zodResolver } from "@hookform/resolvers/zod"
 
 import { Button } from "../Button"
 import { Link } from "@tanstack/react-router"
-import { Input, PasswordInput } from "../Input"
 import { ErrorMessage } from "../ErrorMessage"
+import { Input, PasswordInput } from "../Input"
 
 const formSchema = z.object({
 	email: z.string().email({
@@ -62,7 +62,7 @@ export const LoginForm = () => {
 					</p>
 				</>
 			)}
-			<Button type="submit" className="block w-full mt-[1.875rem]">
+			<Button type="submit" className="block mt-[1.875rem]">
 				Log in to Qencode
 			</Button>
 		</form>

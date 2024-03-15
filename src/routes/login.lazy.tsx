@@ -1,6 +1,6 @@
 import { Link, createLazyFileRoute } from "@tanstack/react-router"
-import { Button } from "../components/Button"
 import { Icons } from "../components/Icons"
+import { Button } from "../components/Button"
 import { LoginForm } from "../components/forms/Login"
 
 export const Route = createLazyFileRoute("/login")({
@@ -14,11 +14,11 @@ function Login() {
 				Log in to your account
 			</h1>
 			<div className="flex justify-between gap-4 pt-10 pb-[1.875rem]">
-				<Button className="w-1/2 gap-[0.625rem]" variant="outline">
+				<Button className="gap-[0.625rem]" variant="outline">
 					<Icons.google />
 					<span className="capitalize">google</span>
 				</Button>
-				<Button className="w-1/2 gap-[0.625rem]" variant="outline">
+				<Button className="gap-[0.625rem]" variant="outline">
 					<Icons.gitHub />
 					<span className="capitalize">gitHub</span>
 				</Button>
