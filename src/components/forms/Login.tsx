@@ -1,49 +1,14 @@
-import * as z from "zod"
-import { useForm } from "react-hook-form"
-import { FormEvent, useState } from "react"
-import { zodResolver } from "@hookform/resolvers/zod"
-
-import { Button } from "../Button"
 import { Link } from "@tanstack/react-router"
+
+import { Icons } from "../Icons"
+import { Button } from "../Button"
 import { ErrorMessage } from "../ErrorMessage"
 import { Input, PasswordInput } from "../Input"
-
-const formSchema = z.object({
-	email: z.string().email({
-		message: "Please provide a valid email address",
-	}),
-	password: z.string().min(6, {
-		message: "Password must be at least 8 characters long",
-	}),
-})
-type FormField = z.infer<typeof formSchema>
+import { useLogin } from "../../hooks/useLogin"
 
 export const LoginForm = () => {
-	const [showPasswordField, setShowPasswordField] = useState(false)
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-		trigger,
-		setFocus,
-	} = useForm<FormField>({
-		resolver: zodResolver(formSchema),
-	})
-
-	const handleLoginFlow = () => {
-		if (showPasswordField) {
-			return handleSubmit(onSubmit)
-		}
-		return async (e: FormEvent<HTMLFormElement>) => {
-			e.preventDefault()
-			const isvalid = await trigger("email", { shouldFocus: true })
-			if (isvalid) {
-				setShowPasswordField(true)
-				setFocus("password")
-			}
-		}
-	}
-	const onSubmit = (data: FormField) => console.log(data)
+	const { errors, handleLoginFlow, loading, register, showPasswordField } =
+		useLogin()
 
 	return (
 		<form onSubmit={handleLoginFlow()} className="pt-[1.875rem]">
@@ -62,8 +27,12 @@ export const LoginForm = () => {
 					</p>
 				</>
 			)}
-			<Button type="submit" className="block mt-[1.875rem]">
-				Log in to Qencode
+			<Button type="submit" className="flex mt-[1.875rem]" disabled={loading}>
+				{loading ? (
+					<Icons.spinner className=" animate-spin" />
+				) : (
+					"Log in to Qencode"
+				)}
 			</Button>
 		</form>
 	)
