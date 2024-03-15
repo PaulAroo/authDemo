@@ -1,4 +1,7 @@
-import { createLazyFileRoute } from "@tanstack/react-router"
+import { Link, createLazyFileRoute } from "@tanstack/react-router"
+import { Button } from "../components/Button"
+import { Icons } from "../components/Icons"
+import { LoginForm } from "../components/forms/Login"
 
 export const Route = createLazyFileRoute("/login")({
 	component: Login,
@@ -6,8 +9,33 @@ export const Route = createLazyFileRoute("/login")({
 
 function Login() {
 	return (
-		<div className="p-2">
-			<h3>Login page</h3>
+		<div className="max-w-[25rem] mt-20 m-auto">
+			<h1 className="text-center text-3xl text-brand-gray-900 font-bold">
+				Log in to your account
+			</h1>
+			<div className="flex justify-between gap-4 pt-10 pb-[1.875rem]">
+				<Button className="w-1/2 gap-[0.625rem]" variant="outline">
+					<Icons.google />
+					<span className="capitalize">google</span>
+				</Button>
+				<Button className="w-1/2 gap-[0.625rem]" variant="outline">
+					<Icons.gitHub />
+					<span className="capitalize">gitHub</span>
+				</Button>
+			</div>
+			<div className="relative">
+				<div className="absolute inset-0 flex items-center">
+					<span className="w-full border-t" />
+				</div>
+				<div className="relative flex justify-center text-xs uppercase">
+					<span className="bg-white px-2 text-brand-gray uppercase">or</span>
+				</div>
+			</div>
+			<LoginForm />
+			<p className="text-center mt-5">
+				Is your company new to Qencode?{" "}
+				<Link className="text-brand">Sign up</Link>
+			</p>
 		</div>
 	)
 }
