@@ -1,5 +1,5 @@
 import { Toaster } from "sonner"
-import { createRootRoute, Outlet } from "@tanstack/react-router"
+import { createRootRoute, Link, Outlet } from "@tanstack/react-router"
 
 import brandlogo from "/logo.svg"
 
@@ -7,7 +7,9 @@ export const Route = createRootRoute({
 	component: () => (
 		<div className="container min-h-dvh pt-32 lg:pt-[11.25rem]">
 			<div className="w-fit m-auto">
-				<img src={brandlogo} alt="quencode logo" />
+				<Link to="/">
+					<img src={brandlogo} alt="quencode logo" />
+				</Link>
 			</div>
 			<Outlet />
 			<Toaster
