@@ -36,7 +36,7 @@ function CreateNewPassword() {
 			</h1>
 			<form onSubmit={handleSubmit(onSubmit)} className="pt-[1.875rem]">
 				<div>
-					<label htmlFor="password">
+					<label className="text-brand-gray-800 font-medium" htmlFor="password">
 						Password
 						<PasswordInput
 							{...register("password", validatePassword)}
@@ -45,8 +45,11 @@ function CreateNewPassword() {
 					</label>
 					<ErrorMessage message={errors.password?.message} />
 				</div>
-				<div>
-					<label htmlFor="password_confirm">
+				<div className="mt-5">
+					<label
+						className="text-brand-gray-800 font-medium"
+						htmlFor="password_confirm"
+					>
 						Confirm Password
 						<PasswordInput
 							{...register("password_confirm", validateConfirmPassword)}
@@ -56,7 +59,11 @@ function CreateNewPassword() {
 					<ErrorMessage message={errors.password_confirm?.message} />
 				</div>
 				<Button type="submit" className="flex mt-[1.875rem]" disabled={loading}>
-					{loading ? <Icons.spinner className="animate-spin" /> : "Send"}
+					{loading ? (
+						<Icons.spinner className="animate-spin" />
+					) : (
+						"Reset Password"
+					)}
 				</Button>
 			</form>
 		</div>

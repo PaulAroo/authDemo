@@ -31,7 +31,7 @@ function ResetPassword() {
 			</form>
 			<Button
 				variant="outline"
-				className="mt-[1.25rem]"
+				className="mt-[1.25rem] text-brand-gray-800"
 				disabled={loading}
 				onClick={() => navigate({ to: "/login" })}
 			>

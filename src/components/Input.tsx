@@ -7,7 +7,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 	({ className, ...props }, ref) => (
 		<input
 			className={cn(
-				"w-full text-brand-gray-800 border-[1.2px] border-brand-gray rounded-[6px] py-[0.875rem] px-3 focus-visible:outline-brand disabled:cursor-not-allowed disabled:opacity-50 placeholder:text-brand-gray",
+				"w-full text-brand-gray-800 border-[1.2px] border-brand-gray rounded-[6px] py-[0.875rem] px-3 focus-visible:outline-brand disabled:cursor-not-allowed disabled:opacity-50 placeholder:text-brand-gray font-normal text-[0.9575rem]",
 				className
 			)}
 			ref={ref}
@@ -37,7 +37,7 @@ const PasswordInput = React.forwardRef<HTMLInputElement, InputProps>(
 					className="absolute right-[1.3rem] md:right-[1.8rem] text-[1rem] text-brand-ash cursor-pointer"
 					onClick={togglePasswordVisibility}
 				>
-					{isPasswordVisible ? <Icons.eyeon /> : <Icons.eyeoff />}
+					{isPasswordVisible ? <Icons.eyeoff /> : <Icons.eyeon />}
 				</div>
 			</div>
 		)
