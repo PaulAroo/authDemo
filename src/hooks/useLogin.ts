@@ -14,7 +14,7 @@ const formSchema = z.object({
 		.min(15, {
 			message: "Email must be at least 15 characters long",
 		}),
-	password: z.string().min(6, {
+	password: z.string().min(8, {
 		message: "Password must be at least 8 characters long",
 	}),
 })
@@ -50,8 +50,8 @@ export const useLogin = () => {
 		setLoading(true)
 		axiosInstance
 			.post("/v1/auth/login", data)
-			.then((res) => {
-				console.log(0, res)
+			.then(() => {
+				toast.success("successfully logged in")
 				setLoading(false)
 			})
 			.catch((error) => {

@@ -33,8 +33,8 @@ export const useForgotPassword = () => {
 		axiosInstance
 			.post("/v1/auth/passwordreset", data)
 			.then(() => {
-				setLoading(false)
 				toast.success(`A password reset link has been sent to ${data.email}`)
+				setLoading(false)
 			})
 			.catch((error) => {
 				console.log(error)
