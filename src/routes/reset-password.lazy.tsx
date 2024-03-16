@@ -1,34 +1,19 @@
-import * as z from "zod"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
 import { createLazyFileRoute, useNavigate } from "@tanstack/react-router"
 
 import { Input } from "../components/Input"
+import { Icons } from "../components/Icons"
 import { Button } from "../components/Button"
 import { ErrorMessage } from "../components/ErrorMessage"
+import { useForgotPassword } from "../hooks/useForgotPassword"
 
 export const Route = createLazyFileRoute("/reset-password")({
 	component: ResetPassword,
 })
 
-const formSchema = z.object({
-	email: z.string().email({
-		message: "Please provide a valid email address",
-	}),
-})
-type FormField = z.infer<typeof formSchema>
-
 function ResetPassword() {
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm<FormField>({
-		resolver: zodResolver(formSchema),
-	})
-
 	const navigate = useNavigate({ from: "/reset-password" })
-	const onSubmit = (data: FormField) => console.log(data)
+	const { errors, onSubmit, loading, handleSubmit, register } =
+		useForgotPassword()
 
 	return (
 		<div className="max-w-[25rem] mt-20 m-auto">
@@ -40,13 +25,14 @@ function ResetPassword() {
 					<Input {...register("email")} placeholder="Enter your email" />
 					<ErrorMessage message={errors.email?.message} />
 				</div>
-				<Button type="submit" className="block mt-[1.875rem]">
-					Send
+				<Button type="submit" className="flex mt-[1.875rem]" disabled={loading}>
+					{loading ? <Icons.spinner className="animate-spin" /> : "Send"}
 				</Button>
 			</form>
 			<Button
 				variant="outline"
 				className="mt-[1.25rem]"
+				disabled={loading}
 				onClick={() => navigate({ to: "/login" })}
 			>
 				Cancel

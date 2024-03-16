@@ -16,7 +16,9 @@ export const Route = createRootRoute({
 					unstyled: true,
 					classNames: {
 						error:
-							"flex p-4 min-w-[356px] items-center text-red-500 shadow-md gap-2 border border-brand-gray rounded-[8px]",
+							"flex bg-white p-4 min-w-[356px] items-center text-red-500 shadow-md gap-2 border border-brand-gray rounded-[8px]",
+						success:
+							"flex bg-white p-4 min-w-[356px] md:min-w-[] items-center shadow-md gap-2 border border-brand-gray rounded-[8px]",
 					},
 				}}
 			/>

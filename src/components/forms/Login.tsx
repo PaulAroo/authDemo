@@ -29,7 +29,7 @@ export const LoginForm = () => {
 			)}
 			<Button type="submit" className="flex mt-[1.875rem]" disabled={loading}>
 				{loading ? (
-					<Icons.spinner className=" animate-spin" />
+					<Icons.spinner className="animate-spin" />
 				) : (
 					"Log in to Qencode"
 				)}
